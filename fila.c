@@ -7,7 +7,7 @@ void queue_init(queue *q){
 }
 
 bool queue_empty(queue q){
-	return q.start == q.end;
+	return q.size == 0;
 }
 bool queue_full(queue q){
 	return q.size == MAX_TAM;
@@ -29,8 +29,8 @@ bool queue_remove(queue *q, t_data * data){
 }
 
 void queue_print(queue q){
-	int i;
+	int i, j;
 	
-	for(i = q.start ; i != q.end ; i = (i+1)%q.size) printf("%d\n",q.itens[i]);
+	for(i = q.start, j=0 ; j < q.size ; j++, i++) printf("%d\n",q.itens[i%(MAX_TAM-1)]);
 
 }
